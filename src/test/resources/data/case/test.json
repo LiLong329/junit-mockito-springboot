@@ -1,0 +1,23 @@
+{
+  "description": "测试用户登陆",
+  "map":{
+    "key":"222"
+  },
+  "list": [{
+    "name": 11,
+    "password": 11,
+    "mock":true,
+    "code":"01"
+  },{
+    "name": 22,
+    "password": 22,
+    "mock":true,
+    "code":"01"
+  },{
+    "name": 33,
+    "password": 33,
+    "mock":false,
+    "code":"00"
+  }]
+
+}

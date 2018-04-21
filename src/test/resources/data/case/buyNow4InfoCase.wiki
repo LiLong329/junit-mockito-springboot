@@ -1,0 +1,8 @@
+json
+{"caseId":0,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":1,"seatCaseId":1,"sellCaseId":1,"sellCheckCaseId":1,"tpoolCheckCaseId":1,"caseType":0,"openMock":1,"errorCode":"","errorMsg":"","des":"不是MOCK一个套票座位CASE"}
+{"caseId":1,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":1,"seatCaseId":1,"sellCaseId":1,"sellCheckCaseId":1,"tpoolCheckCaseId":1,"caseType":0,"openMock":0,"errorCode":"","errorMsg":"","des":"一个座位CASE"}
+{"caseId":2,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":1,"seatCaseId":2,"sellCaseId":1,"sellCheckCaseId":1,"tpoolCheckCaseId":1,"caseType":0,"openMock":0,"errorCode":"","errorMsg":"","des":"俩个座位CASE"}
+{"caseId":3,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":2,"seatCaseId":2,"sellCaseId":1,"sellCheckCaseId":1,"tpoolCheckCaseId":1,"caseType":0,"openMock":0,"errorCode":"","errorMsg":"","des":"套票俩个座位CASE"}
+{"caseId":4,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":3,"seatCaseId":3,"sellCaseId":1,"sellCheckCaseId":1,"tpoolCheckCaseId":1,"caseType":0,"openMock":0,"errorCode":"","errorMsg":"","des":"1套票俩个座位1单座位CASE"}
+{"caseId":4,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":3,"seatCaseId":3,"sellCaseId":1,"sellCheckCaseId":1,"tpoolCheckCaseId":2,"caseType":1,"openMock":0,"errorCode":"118","errorMsg":"当前场次座位未对当前渠道可售","des":"票池没授权"}
+{"caseId":4,"projectCaseId":1,"perfromCaseId":1,"priceCaseId":3,"seatCaseId":3,"sellCaseId":1,"sellCheckCaseId":2,"tpoolCheckCaseId":1,"caseType":1,"openMock":0,"errorCode":"120","errorMsg":"预付款剩余额度小于订单额度，请充值后下单","des":"销售预付款不足"}
