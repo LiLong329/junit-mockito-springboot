@@ -1,7 +1,10 @@
 package com.lilong;
 
 import es.sm2baleares.tinglao.SampleApplication;
+import es.sm2baleares.tinglao.factory.HttpUtil;
+import es.sm2baleares.tinglao.factory.StaticClass;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
@@ -23,9 +26,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @PowerMockRunnerDelegate(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {SampleApplication.class, MyListenerProcessor.class})
 public abstract class BasedTest {
+    protected     final  ClassLoader httpLoader ;
+    public BasedTest(){
+        httpLoader = HttpUtil.class.getClassLoader();
+        System.out.println(httpLoader);
+    }
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
+    }
+
+
+    public static void main(String[] args) {
+        ClassLoader httpLoader =  StaticClass.class.getClassLoader();
+        System.out.println(httpLoader);
     }
 
 }

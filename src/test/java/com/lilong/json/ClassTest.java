@@ -1,8 +1,12 @@
 package com.lilong.json;
 
+import com.lilong.DeClassLoader;
+import es.sm2baleares.tinglao.factory.HttpUtil;
 import org.junit.Test;
 
+import java.io.File;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -18,81 +22,18 @@ import java.util.List;
  */
 public class ClassTest {
 
-    private List<String> list;
+    public static void main(String[] args) throws Exception {
+//        DeClassLoader deClassLoader = new DeClassLoader("");
+        String path = ClassTest.class.getClassLoader().getResource("data/case").getPath();
 
-    @Test
-    public void testA(){
-        Type t = null;
-        try {
-            t = ClassTest.class.getDeclaredField("list").getGenericType();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-        if (ParameterizedType.class.isAssignableFrom(t.getClass())) {
-            for (Type t1:((ParameterizedType)t).getActualTypeArguments()) {
-                System.out.print(t1 + ",");
-            }
-            System.out.println();
-        }
-    }
-    public static void main(String[] args) {
-        Class clazz = String.class;
-        List<String> list = new ArrayList<>();
-//        Type t = list.getClass().getGenericSuperclass();
-//        System.out.println(t);
+//        Thread.currentThread().getContextClassLoader().
+        DeClassLoader deClassLoader = new DeClassLoader(path);
+        Class httpUtil = deClassLoader.loadClass("es.sm2baleares.tinglao.factory.SS");
+        Method getMethod = httpUtil.getDeclaredMethod("post", null);
+        Object hu = httpUtil.newInstance();
+        Object o = getMethod.invoke(hu, null);
 
-        Field[] fs = clazz.getDeclaredFields(); // 得到所有的fields
+        System.out.println(o);
 
-        for(Field f : fs)
-        {
-            Type genericType = f.getGenericType();
-
-            for (Type t1:((ParameterizedType)genericType).getActualTypeArguments()) {
-                System.out.print(t1 + ",");
-            }
-
-            Class fieldClazz = f.getType(); // 得到field的class及类型全路径
-
-            if(fieldClazz.isPrimitive())  continue;  //【1】 //判断是否为基本类型
-
-            if(fieldClazz.getName().startsWith("java.lang")) continue; //getName()返回field的类型全路径；
-
-            if(fieldClazz.isAssignableFrom(List.class)) //【2】
-            {
-                Type fc = f.getGenericType(); // 关键的地方，如果是List类型，得到其Generic的类型
-
-                if(fc == null) continue;
-
-                if(fc instanceof ParameterizedType) // 【3】如果是泛型参数的类型
-                {
-                    ParameterizedType pt = (ParameterizedType) fc;
-
-                    Class genericClazz = (Class)pt.getActualTypeArguments()[0]; //【4】 得到泛型里的class类型对象。
-
-//                    m.put(f.getName(), genericClazz);
-//
-//                    Map<String, Class> m1 = prepareMap(genericClazz);
-//
-//                    m.putAll(m1);
-                }
-            }
-        }
-
-        Field declaredFields = null;
-        try {
-            declaredFields = list.getClass().getDeclaredField("");
-            Type type = declaredFields.getGenericType();
-            System.out.println(type);
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-
-//        for (Field re :  declaredFields) {
-//            Type type = re.getGenericType();
-//            System.out.println(type);
-//        }
-//        String b = "ss";
-//        boolean flag = a.isAssignableFrom(b.getClass());
-//        System.out.println(flag);
     }
 }

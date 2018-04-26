@@ -17,7 +17,7 @@ import java.net.URLConnection;
 public class HttpUtil {
 
     public static String post() {
-        return "000090";
+        return "01";
     }
         public static String get() throws Exception{
             URL url = new URL("http://www.sina.com.cn");

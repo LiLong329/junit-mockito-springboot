@@ -3,10 +3,13 @@ package com.lilong;
 import es.sm2baleares.tinglao.controller.LoginController;
 import es.sm2baleares.tinglao.external.service.UserService;
 import es.sm2baleares.tinglao.factory.HttpUtil;
+import es.sm2baleares.tinglao.factory.StaticClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.internal.progress.ThreadSafeMockingProgress;
+import org.powermock.api.mockito.internal.mockcreation.DefaultMockCreator;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.util.AopTestUtils;
@@ -46,32 +49,42 @@ public class LoginControllerTest extends BasedTest {
     @Mock
     private UserService userServiceMock;
 
-    @Before
-    public void setUp(){
-        mockStatic(HttpUtil.class);
-        when(HttpUtil.post()).thenReturn("00");
-    }
+
     /**
      * 是否模拟
      *
      * @author lichao  2018/4/20
-     * @param mockMode
+     * @param user
      * @return void
      */
-    private void setMock(Boolean mockMode){
-        if (mockMode){
+
+    private void setMock(User user){
+        if (user.getMock()){
             LoginController loginControllerAop = AopTestUtils.getTargetObject(loginController);
-            ReflectionTestUtils.setField(loginControllerAop,"userService",userServiceMock);
-            Map<String,Object> map = new HashMap<>();
-            map.put("resultCode", "01");
-            when(userServiceMock.login(Mockito.anyString(),Mockito.anyString())).thenReturn(map);
+//            ReflectionTestUtils.setField(loginControllerAop,"userService",userServiceMock);
+//            Map<String,Object> map = new HashMap<>();
+//            map.put("resultCode", "00");
+//            when(userServiceMock.login(Mockito.anyString(),Mockito.anyString())).thenReturn(map);
+
+            mockStatic(HttpUtil.class);
+            when(HttpUtil.post()).thenReturn(user.getCode());
         }
     }
 
-    private void restMock(Boolean mockMode){
-        if (mockMode){
+    private void restMock(User user){
+        if (user.getMock()){
             LoginController loginControllerAop = AopTestUtils.getTargetObject(loginController);
             ReflectionTestUtils.setField(loginControllerAop,"userService",userService);
+
+//            ThreadSafeMockingProgress.mockingProgress().reset();
+
+
+//            ClassLoader staticClass = StaticClass.class.getClassLoader();
+//            ClassLoader classLoader = HttpUtil.class.getClassLoader();
+////            classLoader.findLoadedClass();
+//            System.out.println(httpLoader);
+//            System.out.println(super.httpLoader.equals(classLoader));
+//            Thread.currentThread().setContextClassLoader(httpLoader);
         }
     }
 
@@ -81,12 +94,12 @@ public class LoginControllerTest extends BasedTest {
         System.out.println(map.get("key"));
         userList.forEach(s -> {
                    System.out.println(s.getMock()?"模拟数据":"真实数据");
-                    setMock(s.getMock());
+                    setMock(s);
 
                     Map<String,Object> result = loginController.login(s.getName(), s.getPassword());
                     System.out.println("返回值:\t"+result.get("resultCode"));
                     assertTrue(s.getCode().equals(result.get("resultCode")));
-                    restMock(s.getMock());
+                    restMock(s);
                     System.err.println("----------------------");
                 }
         );
