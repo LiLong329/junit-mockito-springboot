@@ -1,4 +1,4 @@
-package com.lilong;
+package com.lilong.config;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONPath;

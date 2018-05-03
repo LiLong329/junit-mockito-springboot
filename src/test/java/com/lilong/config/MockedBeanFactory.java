@@ -1,4 +1,4 @@
-package com.lilong;
+package com.lilong.config;
 
 import es.sm2baleares.tinglao.external.service.UserService;
 import org.mockito.Mockito;

@@ -1,5 +1,6 @@
 package com.lilong;
 
+import com.lilong.config.MyListenerProcessor;
 import es.sm2baleares.tinglao.SampleApplication;
 import es.sm2baleares.tinglao.factory.HttpUtil;
 import es.sm2baleares.tinglao.factory.StaticClass;
@@ -11,8 +12,6 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestComponent;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 

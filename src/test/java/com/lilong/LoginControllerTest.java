@@ -1,16 +1,14 @@
 package com.lilong;
 
+import com.lilong.config.MockData;
+import com.lilong.config.MockList;
 import es.sm2baleares.tinglao.controller.LoginController;
 import es.sm2baleares.tinglao.external.service.UserService;
 import es.sm2baleares.tinglao.factory.HttpUtil;
-import es.sm2baleares.tinglao.factory.StaticClass;
 import net.sf.json.JSONObject;
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.internal.progress.ThreadSafeMockingProgress;
-import org.powermock.api.mockito.internal.mockcreation.DefaultMockCreator;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.util.AopTestUtils;

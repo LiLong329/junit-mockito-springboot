@@ -1,4 +1,4 @@
-package com.didispace;
+package com.didispace.a.b.c;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

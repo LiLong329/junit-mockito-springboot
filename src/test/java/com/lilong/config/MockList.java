@@ -1,4 +1,4 @@
-package com.lilong;
+package com.lilong.config;
 
 
 import org.springframework.core.Ordered;

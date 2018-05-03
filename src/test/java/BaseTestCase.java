@@ -19,10 +19,9 @@ import static org.mockito.Mockito.when;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.MOCK;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
-//@EnableTransactionManagement
-@PowerMockIgnore({"java.lang.management.*","javax.management.*","javax.xml.*","org.xml.sax.*","org.apache.xerces.*","org.w3c.*"})
+
+@PowerMockIgnore({"java.lang.management.*","javax.management.*","javax.xml.*","org.xml.sax.*",
+        "javax.crypto.*", "javax.net.ssl.*","org.apache.xerces.*","org.w3c.*"})
 @RunWith(PowerMockRunner.class)
 @PowerMockRunnerDelegate(SpringJUnit4ClassRunner.class)
 @PrepareForTest(IdGenerator.class)
