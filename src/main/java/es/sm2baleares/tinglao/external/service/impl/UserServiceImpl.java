@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
     public Map<String,Object> login(String name, String password) {
         Map<String,Object> map = new HashMap<>();
         try {
-            String result = HttpUtil.post();
+            String result = HttpUtil.getJsonUtf8MimeType(null);
             map.put("resultCode", result);
             LOGGER.debug("请求：name{} password{}",name,password);
         } catch (Exception e) {

@@ -11,7 +11,10 @@ import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.modules.junit4.PowerMockRunnerDelegate;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestComponent;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 /**
  * 类名称：MockitoBasedTest<br>
@@ -23,8 +26,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @PowerMockIgnore({"java.lang.management.*","javax.management.*","javax.xml.*","org.xml.sax.*","org.apache.xerces.*","org.w3c.*"})
 @RunWith(PowerMockRunner.class)
-@PowerMockRunnerDelegate(SpringJUnit4ClassRunner.class)
+@PowerMockRunnerDelegate(SpringRunner.class)
 @SpringBootTest(classes = {SampleApplication.class, MyListenerProcessor.class})
+@WebAppConfiguration
 public abstract class BasedTest {
     protected     final  ClassLoader httpLoader ;
     public BasedTest(){
@@ -37,7 +41,8 @@ public abstract class BasedTest {
     }
 
 
-    public static void main(String[] args) {
+    @Test
+    public  void main1() {
         ClassLoader httpLoader =  StaticClass.class.getClassLoader();
         System.out.println(httpLoader);
     }

@@ -67,7 +67,7 @@ public class SpringTest {
     @Before
     public void setUp(){
         mockStatic(HttpUtil.class);
-        when(HttpUtil.post()).thenReturn("mock_post");
+       // when(HttpUtil.post()).thenReturn("mock_post");
     }
 
     private void setMock(Boolean mockMode){
